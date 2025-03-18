@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-
 #include "CppBaseActor.generated.h"
 
 USTRUCT(BlueprintType)
@@ -12,7 +11,7 @@ struct FTransformStruct
 {
 	GENERATED_USTRUCT_BODY()
 
-	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FVector CurrentLocation = FVector::ZeroVector;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -20,10 +19,7 @@ struct FTransformStruct
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FVector CurientScale = FVector(1.0f, 1.0f, 1.0f);
-
-
 };
-
 
 class UStaticMeshComponent;
 
@@ -45,39 +41,46 @@ public:
 
 protected:
 	// Called when the game starts or when spawned
-	//функции
+	virtual void BeginPlay() override;
+
+	// Функции
 	UFUNCTION(BlueprintCallable)
 	void ShowInformation();
-	UFUNCTION(BlueprintCallable)
-	float SinMovement(float var1);
 
-	virtual void BeginPlay() override;
-	//переменные
+	UFUNCTION(BlueprintCallable)
+	float SinMovement(float Time);
+
+	// Переменные
 	UPROPERTY(EditInstanceOnly)
 	FString PlayerName = "Netologiya";
+
 	UPROPERTY(EditInstanceOnly)
 	int EnemyNum = 20;
+
 	UPROPERTY(EditInstanceOnly)
 	float CurrentHealth = 100;
+
 	UPROPERTY(EditInstanceOnly)
 	bool IsAlive = true;
 
 	UPROPERTY(EditAnywhere)
-	float Amplitude; // амплитуда
-	UPROPERTY(EditAnywhere)
-	float Frequency; // частота
-	UPROPERTY(EditAnywhere)
-	FVector MovementAxis; // положение
+	float Amplitude; // Амплитуда
 
-	float RunningTime; // переменная для времени
-	//видимость
+	UPROPERTY(EditAnywhere)
+	float Frequency; // Частота
+
+	UPROPERTY(EditAnywhere)
+	FVector MovementAxis; // Ось движения
+
+	float RunningTime; // Время, прошедшее с начала движения
+
+	// Видимость
 	UPROPERTY(VisibleAnywhere)
-	UStaticMeshComponent* Mesh; //тело объекта	
+	UStaticMeshComponent* Mesh; // Тело объекта
 
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 private:
-	
 };
