@@ -50,27 +50,7 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	float SinMovement(float Time);
 
-	// Переменные
-	UPROPERTY(EditInstanceOnly)
-	FString PlayerName = "Netologiya";
-
-	UPROPERTY(EditInstanceOnly)
-	int EnemyNum = 20;
-
-	UPROPERTY(EditInstanceOnly)
-	float CurrentHealth = 100;
-
-	UPROPERTY(EditInstanceOnly)
-	bool IsAlive = true;
-
-	UPROPERTY(EditAnywhere)
-	float Amplitude; // Амплитуда
-
-	UPROPERTY(EditAnywhere)
-	float Frequency; // Частота
-
-	UPROPERTY(EditAnywhere)
-	FVector MovementAxis; // Ось движения
+	
 
 	float RunningTime; // Время, прошедшее с начала движения
 
@@ -81,6 +61,28 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	// Переменные
+	UPROPERTY(EditInstanceOnly, Category = "Cpp Base Actor")
+	FString PlayerName = "Netologiya";
+
+	UPROPERTY(EditInstanceOnly, Category = "Cpp Base Actor")
+	int EnemyNum = 20;
+
+	UPROPERTY(EditInstanceOnly, Category = "Cpp Base Actor")
+	float CurrentHealth = 100;
+
+	UPROPERTY(EditInstanceOnly, Category = "Cpp Base Actor")
+	bool IsAlive = true;
+
+	UPROPERTY(EditInstanceOnly, Category = "Cpp Base Actor")
+	float Amplitude = 0; // Амплитуда
+
+	UPROPERTY(EditInstanceOnly,Category = "Cpp Base Actor")
+	float Frequency = 0; // Частота
+
+	UPROPERTY(EditInstanceOnly)
+	FVector MovementAxis = FVector(1.0f, 1.0f, 1.0f); // Ось движения
 
 private:
 };
